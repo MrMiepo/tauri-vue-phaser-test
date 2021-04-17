@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <button @click="setFullscreen"></button>
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
@@ -31,12 +32,25 @@
 </template>
 
 <script>
-export default {
+import Vue from 'vue';
+import { appWindow } from '@Tauri/window';
+
+export default Vue.extend({
   name: 'HelloWorld',
   props: {
     msg: String
-  }
-}
+  },
+  mounted() {
+    this.setUp();
+  },
+  methods: {
+    setUp() {
+    },
+    setFullscreen() {
+      appWindow.maximize();
+    },
+  },
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
